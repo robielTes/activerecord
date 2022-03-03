@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_03_090214) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_03_094140) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -30,12 +30,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_090214) do
     t.decimal "item_price", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "orders_id"
+    t.bigint "products_id"
+    t.index ["orders_id"], name: "index_order_items_on_orders_id"
+    t.index ["products_id"], name: "index_order_items_on_products_id"
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "shipped_at"
     t.string "status"
+    t.bigint "clients_id"
+    t.index ["clients_id"], name: "index_orders_on_clients_id"
   end
 
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,6 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_090214) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "categories_id"
+    t.index ["categories_id"], name: "index_products_on_categories_id"
   end
 
+  add_foreign_key "order_items", "orders", column: "orders_id"
+  add_foreign_key "order_items", "products", column: "products_id"
+  add_foreign_key "orders", "clients", column: "clients_id"
+  add_foreign_key "products", "categories", column: "categories_id"
 end
