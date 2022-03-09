@@ -42,7 +42,10 @@ Exigence 2
 
 Afin de prouver que vos classes et leurs associations fonctionnent, vous allez:
 
-  - Créez ...
+  - Créer 3 catégories
+  - créer 6 produits associés aux catégories
+  - créer 3 clients
+  - créer 4 commandes avec pour chacune un certain nombre de produits de votre choix 
 
 
 Exigence 3
