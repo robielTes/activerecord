@@ -13,22 +13,22 @@
 ActiveRecord::Schema.define(version: 2022_03_03_094140) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 50
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clients", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
+    t.string "firstname", limit: 60
+    t.string "lastname", limit: 60
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity"
-    t.decimal "item_price", precision: 10
+    t.decimal "item_price", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "orders_id"
@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 2022_03_03_094140) do
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "shipped_at"
-    t.string "status"
+    t.string "status", limit: 20
     t.bigint "clients_id"
     t.index ["clients_id"], name: "index_orders_on_clients_id"
   end
 
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "price"
+    t.string "name", limit: 50
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

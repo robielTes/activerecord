@@ -34,7 +34,12 @@ Exigence 1
 Créez la BD selon les spécifications précédentes en ajoutant aussi les clés étrangères selon la convention de
 nommage de ActiveRecord.
 
-Crééz les classes ActiveRecord pour chacune de ces entités avec les **associations**.
+Crééz les classes modèles dérivées de `ActiveRecord` pour chacune de ces entités avec les **associations** en
+se basant sur la liste du point précédent et les indications suivantes:
+
+- Un `product` n'a qu'une `category`. Une `category` regroupe plusieurs `products`.
+- Une `order` est commandée par un `client`. Un `client` peut passer plusieurs `orders`.
+- une `order` est composée de plusieurs `order_items` qui chacun référencie un `product`.
 
 
 Exigence 2
@@ -42,10 +47,10 @@ Exigence 2
 
 Afin de prouver que vos classes et leurs associations fonctionnent, vous allez:
 
-  - Créer 3 catégories
-  - créer 6 produits associés aux catégories
-  - créer 3 clients
-  - créer 4 commandes avec pour chacune un certain nombre de produits de votre choix 
+- Créer 3 catégories
+- Créer 6 produits associés aux catégories
+- Créér 3 clients
+- Créér 4 commandes avec pour chacune un certain nombre de produits de votre choix
 
 
 Exigence 3
@@ -53,10 +58,10 @@ Exigence 3
 
 Ajoutez les *scopes* suivants:
 
-  - Sur `Product`: `cheap` qui permet de sortir les produits dont le prix est de -.20 ou moins
-  - Sur `OrderItem`: `bulk` qui permet de sortir les items qui ont été commandé avec une quantity
-    de 100 pièces ou plus. Ce scope acceptera un paramètre qui est le seuil du nombre de pièces.
-    Comme indiqué par défaut c'est 100 pièces.
+- Sur `Product`: `cheap` qui permet de sortir les produits dont le prix est de -.20 ou moins
+- Sur `OrderItem`: `bulk` qui permet de sortir les items qui ont été commandé avec une quantity
+  de 100 pièces ou plus. Ce scope acceptera un paramètre qui est le seuil du nombre de pièces.
+  Comme indiqué par défaut c'est 100 pièces.
 
 Ensuite, faites en sorte que le programme principal affiche pour un client donné, les produits
 pas cher qu'il a commandé.
@@ -70,8 +75,8 @@ Exigence 4
 La cohérence des données dans la BD est importante, vous allez donc ajouter des règles
 de validations:
 
-  - Un client doit avoir un prénom et un nom (pas trop court)
-  - Une commande ne peut être passée que si:
+- Un client doit avoir un prénom et un nom (pas trop court)
+- Une commande ne peut être passée que si:
     - il y a au moins un produit commandé
 
 Exigence 5
@@ -91,8 +96,8 @@ Exigence 6
 
 Les clients sont de deux types différents:
 
-  - Les particuliers
-  - Les entreprises
+- Les particuliers
+- Les entreprises
 
 Adaptez votre code pour prendre en compte ce changement.
 
@@ -113,8 +118,8 @@ Exigence 8
 Le système devient *social*, nos utilisateurs veulent donc pouvoir poster
 des commentaires sur:
 
-  - Les produits
-  - Les fournisseurs
+- Les produits
+- Les fournisseurs
 
 Ajoutez les tables, les modèles et les associations.
 
