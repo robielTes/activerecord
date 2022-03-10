@@ -1,51 +1,45 @@
 
 require_relative '../connection'
 require_relative '../models'
+require 'faker'
 
-pcr = Category.create!(name: 'PCR',description: 'produit')
-sup = Category.create!(name: 'SUP',description: 'Little apple')
-ele = Category.create!(name: 'ELE',description: 'SUP')
-gam = Category.create!(name: 'GAM',description: 'Gaming')
+music = Category.create!(name: 'MUC',description: 'musics')
+movie = Category.create!(name: 'MOV',description: 'movies')
+book = Category.create!(name: 'BOK',description: 'books')
+games = Category.create!(name: 'GAM',description: 'Games')
 puts "Category seeder done"
 
-product1 = Product.create!(name: 'apple', price: 2.35, description: 'Little apple', categories_id: pcr.id)
-product2 = Product.create!(name: 'lemon', price: 6.15, description: 'Big lemon', categories_id: pcr.id)
-product3 = Product.create!(name: 'limousine', price: 25.95, description: 'A limousine', categories_id: sup.id)
-product4 = Product.create!(name: 'truck', price: 200, description: 'A truck', categories_id: sup.id)
-product5 = Product.create!(name: 'GTA', price: 25.95, description: 'A limousine', categories_id: gam.id)
-product6 = Product.create!(name: 'fifa22', price: 69, description: 'A truck', categories_id: gam.id)
-puts "Product seeder done"
+20.times do |id|
+  Product.create!(name: Faker::Music.album, price: Faker::Commerce.price(range:1..20.0), description: "#{Faker::Music.band} #{Faker::Music.album}", categories_id: music.id)
+end
 
-client1 = Client.create!(firstname: 'robiel', lastname: 'Tesfazghi')
-client2 = Client.create!(firstname: 'yannick', lastname: 'baudraz')
-client3 = Client.create!(firstname: 'john', lastname: 'doedoe')
-puts "Client seeder done"
+20.times do |id|
+  Product.create!(name: Faker::Movie.title , price: Faker::Commerce.price(range:2..50.0), description: Faker::Movie.quote, categories_id: movie.id)
+end
 
+20.times do |id|
+  Product.create!(name: Faker::Book.title, price: Faker::Commerce.price(range:0..80.0), description: "#{Faker::Book.author} #{Faker::Book.genre }", categories_id: book.id)
+end
 
-order1 = Order.create!(status: 'PROGRESS', clients_id: client1.id, shipped_at:2.week.ago)
-order2 = Order.create!(status: 'PROGRESS', clients_id: client2.id, shipped_at:1.day.ago)
-order3 = Order.create!(status: 'DELEVERED', clients_id: client2.id, shipped_at:3.week.ago)
-order4 = Order.create!(status: 'DELEVERED', clients_id: client3.id, shipped_at:1.week.ago)
-puts "Order seeder done"
+20.times do |id|
+  Product.create!(name: Faker::Game.title, price: Faker::Commerce.price(range:2..100.0), description: "#{Faker::Game.genre} #{Faker::Game.platform}", categories_id: games.id)
+end
+puts "Created #{Product.count} games"
 
 
+Client.create!(firstname: 'robiel', lastname: 'Tesfazghi')
+100.times do |id|
+  Client.create!(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name)
+end
+puts "Created #{Client.count + 1} clients"
 
-OrderItem.create!(quantity: 2, item_price: 235, products_id: product1.id, orders_id: order1.id)
-OrderItem.create!(quantity: 125,item_price: 25, products_id: product3.id, orders_id: order1.id)
-OrderItem.create!(quantity: 3,item_price: 35, products_id: product4.id, orders_id: order1.id)
+100.times do |id|
+  Order.create!(status: Faker::Subscription.status , clients_id: Faker::Number.between(from: 1, to: 100), shipped_at:Faker::Time.between(from: DateTime.now - 365, to: DateTime.now))
+end
+puts "Created #{Order.count + 1} orders"
 
-OrderItem.create!(quantity: 1, item_price: 1.35, orders_id: order2.id, products_id: product1.id)
-OrderItem.create!(quantity: 75, item_price: 2.5, orders_id: order2.id, products_id: product2.id)
-OrderItem.create!(quantity: 3, item_price: 135, orders_id: order2.id, products_id: product3.id)
-OrderItem.create!(quantity: 200, item_price: 245, orders_id: order2.id, products_id: product4.id)
 
-OrderItem.create!(quantity: 2, item_price: 26, products_id: product1.id, orders_id: order1.id)
-OrderItem.create!(quantity: 125, item_price: 2935, products_id: product3.id, orders_id: order1.id)
-OrderItem.create!(quantity: 3, item_price: 205, products_id: product4.id, orders_id: order1.id)
-
-OrderItem.create!(quantity: 1, item_price: 5, orders_id: order2.id, products_id: product6.id)
-OrderItem.create!(quantity: 75, item_price: 35, orders_id: order2.id, products_id: product2.id)
-OrderItem.create!(quantity: 3, item_price: 2, orders_id: order2.id, products_id: product5.id)
-OrderItem.create!(quantity: 200, item_price: 2.35, orders_id: order2.id, products_id: product4.id)
-
-puts '--SEEDERS DONE--'
+200.times do |id|
+  OrderItem.create!(quantity: Faker::Number.non_zero_digit, item_price:Faker::Commerce.price(range:50..100.0), products_id: Faker::Number.between(from: 1, to: 80), orders_id:Faker::Number.between(from: 1, to: 100))
+end
+puts "Created #{Product.count + 1} order Items"
