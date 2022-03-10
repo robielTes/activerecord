@@ -1,6 +1,6 @@
 
-require_relative 'connection'
-require_relative 'models'
+require_relative '../connection'
+require_relative '../models'
 
 pcr = Category.create!(name: 'PCR',description: 'produit')
 sup = Category.create!(name: 'SUP',description: 'Little apple')
@@ -22,10 +22,10 @@ client3 = Client.create!(firstname: 'john', lastname: 'doedoe')
 puts "Client seeder done"
 
 
-order1 = Order.create!(status: 'PROGRESS', clients_id: client1.id)
-order2 = Order.create!(status: 'PROGRESS', clients_id: client2.id)
-order3 = Order.create!(status: 'DELEVERED', clients_id: client2.id)
-order4 = Order.create!(status: 'DELEVERED', clients_id: client3.id)
+order1 = Order.create!(status: 'PROGRESS', clients_id: client1.id, shipped_at:2.week.ago)
+order2 = Order.create!(status: 'PROGRESS', clients_id: client2.id, shipped_at:1.day.ago)
+order3 = Order.create!(status: 'DELEVERED', clients_id: client2.id, shipped_at:3.week.ago)
+order4 = Order.create!(status: 'DELEVERED', clients_id: client3.id, shipped_at:1.week.ago)
 puts "Order seeder done"
 
 
