@@ -1,3 +1,4 @@
+
 require_relative 'connection'
 require_relative 'models'
 
@@ -29,22 +30,22 @@ puts "Order seeder done"
 
 
 
-  OrderItem.create!(quantity: 2, item_price: 235, products_id: product1.id, orders_id: order1.id)
-  OrderItem.create!(quantity: 125,item_price: 25, products_id: product3.id, orders_id: order1.id)
-  OrderItem.create!(quantity: 3,item_price: 35, products_id: product4.id, orders_id: order1.id)
+OrderItem.create!(quantity: 2, item_price: 235, products_id: product1.id, orders_id: order1.id)
+OrderItem.create!(quantity: 125,item_price: 25, products_id: product3.id, orders_id: order1.id)
+OrderItem.create!(quantity: 3,item_price: 35, products_id: product4.id, orders_id: order1.id)
 
-  OrderItem.create!(quantity: 1, item_price: 1.35, orders_id: order2.id, products_id: product1.id)
-  OrderItem.create!(quantity: 75, item_price: 2.5, orders_id: order2.id, products_id: product2.id)
-  OrderItem.create!(quantity: 3, item_price: 135, orders_id: order2.id, products_id: product3.id)
-  OrderItem.create!(quantity: 200, item_price: 245, orders_id: order2.id, products_id: product4.id)
+OrderItem.create!(quantity: 1, item_price: 1.35, orders_id: order2.id, products_id: product1.id)
+OrderItem.create!(quantity: 75, item_price: 2.5, orders_id: order2.id, products_id: product2.id)
+OrderItem.create!(quantity: 3, item_price: 135, orders_id: order2.id, products_id: product3.id)
+OrderItem.create!(quantity: 200, item_price: 245, orders_id: order2.id, products_id: product4.id)
 
-  OrderItem.create!(quantity: 2, item_price: 26, products_id: product1.id, orders_id: order1.id)
-  OrderItem.create!(quantity: 125, item_price: 2935, products_id: product3.id, orders_id: order1.id)
-  OrderItem.create!(quantity: 3, item_price: 205, products_id: product4.id, orders_id: order1.id)
+OrderItem.create!(quantity: 2, item_price: 26, products_id: product1.id, orders_id: order1.id)
+OrderItem.create!(quantity: 125, item_price: 2935, products_id: product3.id, orders_id: order1.id)
+OrderItem.create!(quantity: 3, item_price: 205, products_id: product4.id, orders_id: order1.id)
 
-  OrderItem.create!(quantity: 1, item_price: 5, orders_id: order2.id, products_id: product6.id)
-  OrderItem.create!(quantity: 75, item_price: 35, orders_id: order2.id, products_id: product2.id)
-  OrderItem.create!(quantity: 3, item_price: 2, orders_id: order2.id, products_id: product5.id)
-  OrderItem.create!(quantity: 200, item_price: 2.35, orders_id: order2.id, products_id: product4.id)
+OrderItem.create!(quantity: 1, item_price: 5, orders_id: order2.id, products_id: product6.id)
+OrderItem.create!(quantity: 75, item_price: 35, orders_id: order2.id, products_id: product2.id)
+OrderItem.create!(quantity: 3, item_price: 2, orders_id: order2.id, products_id: product5.id)
+OrderItem.create!(quantity: 200, item_price: 2.35, orders_id: order2.id, products_id: product4.id)
 
 puts '--SEEDERS DONE--'
