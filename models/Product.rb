@@ -14,5 +14,5 @@ class Product < ActiveRecord::Base
 end
 
 class Supplier < ActiveRecord::Base
-  has_many :comments, as: :subject
+  has_many :comments, as: :target
 end

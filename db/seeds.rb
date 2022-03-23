@@ -26,6 +26,11 @@ end
 end
 puts "Created #{Product.count} products"
 
+20.times do |id|
+  Supplier.create!(product_id: Faker::Number.number(digits: 2), name: Faker::Company.name, description: Faker::Company.industry)
+end
+puts "Created #{Supplier.count} supplier"
+
 Client.create!(firstname: 'robiel', lastname: 'Tesfazghi')
 100.times do |id|
   Client.create!(firstname: Faker::Name.first_name, lastname: Faker::Name.last_name)

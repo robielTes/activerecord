@@ -71,6 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_23_131813) do
 
   create_table "suppliers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "product_id"
+    t.text "name"
+    t.text "description"
   end
 
   add_foreign_key "order_items", "orders", column: "orders_id"
