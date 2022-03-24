@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   has_many :comments, as: :target
 
   def to_s
-    "#{id} \t  #{name} \t #{price} \t #{description}"
+    "#{id} \t  #{name} \t #{price} \t #{description} \t #{quantity}"
   end
 
   def self.random_id

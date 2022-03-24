@@ -10,19 +10,19 @@ puts "Category seeder done"
 
 50.times do |id|
   Product.create!(name: Faker::Music.album, price: Faker::Commerce.price(range: 0..10.0),
-                  description: "#{Faker::Music.band} #{Faker::Music.album}", categories_id: music.id)
+                  description: "#{Faker::Music.band} #{Faker::Music.album}", categories_id: music.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Movie.title, price: Faker::Commerce.price(range: 0..50.0),
-                  description: Faker::Movie.quote, categories_id: movie.id)
+                  description: Faker::Movie.quote, categories_id: movie.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Book.title, price: Faker::Commerce.price(range: 0..20.0),
-                  description: "#{Faker::Book.author} #{Faker::Book.genre }", categories_id: book.id)
+                  description: "#{Faker::Book.author} #{Faker::Book.genre }", categories_id: book.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Game.title, price: Faker::Commerce.price(range: 0..70.0),
-                  description: "#{Faker::Game.genre} #{Faker::Game.platform}", categories_id: games.id)
+                  description: "#{Faker::Game.genre} #{Faker::Game.platform}", categories_id: games.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 puts "Created #{Product.count} products"
 
