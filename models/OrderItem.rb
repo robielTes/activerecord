@@ -22,5 +22,6 @@ class OrderItem < ActiveRecord::Base
     "#{id} \t #{quantity} \t #{item_price}"
   end
 
+  #OrderItem.where("item_price = '#{OrderItem.maximum('item_price')}'")
 
 end

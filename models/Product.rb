@@ -1,9 +1,8 @@
-class Product < ActiveRecord::Base.observers << :product_observer
+class Product < ActiveRecord::Base
   belongs_to :category
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :comments, as: :target
-
 
 
   def to_s
@@ -11,7 +10,7 @@ class Product < ActiveRecord::Base.observers << :product_observer
   end
 
   def self.random_id
-    return self.all.shuffle.first.id
+     self.all.shuffle.first.id
   end
 end
 
