@@ -24,6 +24,8 @@ firstProduct.save
 =end
 
 
-puts Order.exepensive_command
+#puts Order.exepensive_command
 #puts Category.never_ordered
-
+puts Client.without_orders
+puts Client.without_orders.destroy_all
+#puts Client.without_orders.delete_all

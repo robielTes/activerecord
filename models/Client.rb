@@ -10,6 +10,15 @@ class Client < ActiveRecord::Base
   def to_s
     "#{id} \t #{firstname} \t #{lastname}"
   end
+
+  def self.without_orders
+    #joins(:orders).where(orders: {id: nil})
+    where.missing(:orders)
+  end
+
+
+
+
 end
 
 class Individual < Client
