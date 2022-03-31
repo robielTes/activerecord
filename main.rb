@@ -24,4 +24,4 @@ firstProduct.save
 =end
 
 
-puts Order.last.exepensive_command
+puts Category.never_ordered
