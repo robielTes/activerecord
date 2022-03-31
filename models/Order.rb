@@ -20,8 +20,8 @@ class Order < ActiveRecord::Base
     return self.all.shuffle.first.id
   end
 
-  def exepensive_command
-    order_items.max_by(&:price)
+  def self.exepensive_command
+    all.max_by(&:price)
   end
 
 end
