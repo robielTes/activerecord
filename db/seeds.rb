@@ -11,24 +11,24 @@ puts "Category seeder done"
 
 50.times do |id|
   Product.create!(name: Faker::Music.album, price: Faker::Commerce.price(range: 0..10.0),
-                  description: "#{Faker::Music.band} #{Faker::Music.album}", categorie_id: music.id, quantity: Faker::Number.between(from: 0, to: 100))
+                  description: "#{Faker::Music.band} #{Faker::Music.album}", category_id: music.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Movie.title, price: Faker::Commerce.price(range: 0..50.0),
-                  description: Faker::Movie.quote, categorie_id: movie.id, quantity: Faker::Number.between(from: 0, to: 100))
+                  description: Faker::Movie.quote, category_id: movie.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Book.title, price: Faker::Commerce.price(range: 0..20.0),
-                  description: "#{Faker::Book.author} #{Faker::Book.genre }", categorie_id: book.id, quantity: Faker::Number.between(from: 0, to: 100))
+                  description: "#{Faker::Book.author} #{Faker::Book.genre }", category_id: book.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 50.times do |id|
   Product.create!(name: Faker::Game.title, price: Faker::Commerce.price(range: 0..70.0),
-                  description: "#{Faker::Game.genre} #{Faker::Game.platform}", categorie_id: games.id, quantity: Faker::Number.between(from: 0, to: 100))
+                  description: "#{Faker::Game.genre} #{Faker::Game.platform}", category_id: games.id, quantity: Faker::Number.between(from: 0, to: 100))
 end
 puts "Created #{Product.count} products"
 
 20.times do |id|
-  Supplier.create!(product_id: Faker::Number.number(digits: 2), name: Faker::Company.name, description: Faker::Company.industry)
+  Supplier.create!( name: Faker::Company.name, description: Faker::Company.industry)
 end
 puts "Created #{Supplier.count} supplier"
 
